@@ -1,2 +1,141 @@
 # Book-Search-Engine1.0
 Mern: book search engine
+
+## Your Task
+
+Your assignment this week is emblematic of the fact that most modern websites are driven by two things: data and user demands. This shouldn't come as a surprise, as the ability to personalize user data is the cornerstone of real-world web development today. And as user demands evolve, applications need to be more performant.
+
+This week, you’ll take starter code with a fully functioning Google Books API search engine built with a RESTful API, and refactor it to be a GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. It's already set up to allow users to save book searches to the back end. 
+
+To complete the assignment, you’ll need to do the following:
+
+1. Set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
+
+2. Modify the existing authentication middleware so that it works in the context of a GraphQL API.
+
+3. Create an Apollo Provider so that requests can communicate with an Apollo Server.
+
+4. Deploy your application to Heroku with a MongoDB database using MongoDB Atlas. Use the [Deploy with Heroku and MongoDB Atlas](https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas) walkthrough for instructions.
+
+
+## User Story
+
+```md
+AS AN avid reader
+I WANT to search for new books to read
+SO THAT I can keep a list of books to purchase
+```
+
+### Back-End Specifications
+
+You’ll need to complete the following tasks in each of these back-end files:
+
+* `auth.js`: Update the auth middleware function to work with the GraphQL API.
+
+* `server.js`: Implement the Apollo Server and apply it to the Express server as middleware.
+
+	> **Important**: Apollo Server recently migrated to Apollo Server 3. This major-version release impacts how Apollo Server interacts in an Express environment. To implement Apollo Server 2 as demonstrated in the activities, you **MUST** use the following script `npm install apollo-server-express@2.15.0` to install Apollo Server 2. Alternately, to migrate to the latest version of Apollo Server, please refer to the [Apollo Server Docs on Migrating to Apollo Server 3](https://www.apollographql.com/docs/apollo-server/migration/#nodejs) and [Apollo Server Docs on Implementing Apollo Server Express with v3](https://www.apollographql.com/docs/apollo-server/integrations/middleware/#apollo-server-express). Note that if you are using Apollo Server 3 you are required use `await server.start()` before calling `server.applyMiddleware`.
+
+* `Schemas` directory:
+
+	* `index.js`: Export your typeDefs and resolvers.
+
+	* `resolvers.js`: Define the query and mutation functionality to work with the Mongoose models.
+
+		**Hint**: Use the functionality in the `user-controller.js` as a guide.
+
+	* `typeDefs.js`: Define the necessary `Query` and `Mutation` types:
+
+		* `Query` type:
+
+			* `me`: Which returns a `User` type.
+		
+		* `Mutation` type:
+
+			* `login`: Accepts an email and password as parameters; returns an `Auth` type.
+
+			* `addUser`: Accepts a username, email, and password as parameters; returns an `Auth` type.
+
+			* `saveBook`: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a `User` type. (Look into creating what's known as an `input` type to handle all of these parameters!)
+
+			* `removeBook`: Accepts a book's `bookId` as a parameter; returns a `User` type.
+			
+		* `User` type:
+
+			* `_id`
+
+			* `username`
+
+			* `email`
+
+			* `bookCount`
+
+			* `savedBooks` (This will be an array of the `Book` type.)
+
+		* `Book` type:
+
+			* `bookId` (Not the `_id`, but the book's `id` value returned from Google's Book API.)
+
+			* `authors` (An array of strings, as there may be more than one author.)
+
+			* `description`
+
+			* `title`
+
+			* `image`
+
+			* `link`
+
+		* `Auth` type:
+
+			* `token`
+
+			* `user` (References the `User` type.)
+
+
+### Front-End Specifications
+
+You'll need to create the following front-end files:
+
+* `queries.js`: This will hold the query `GET_ME`, which will execute the `me` query set up using Apollo Server.
+
+* `mutations.js`:
+
+	* `LOGIN_USER` will execute the `loginUser` mutation set up using Apollo Server.
+
+	* `ADD_USER` will execute the `addUser` mutation.
+
+	* `SAVE_BOOK` will execute the `saveBook` mutation.
+
+	* `REMOVE_BOOK` will execute the `removeBook` mutation.
+
+Additionally, you’ll need to complete the following tasks in each of these front-end files:
+
+* `App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
+	
+* `SearchBooks.js`:
+
+	* Use the Apollo `useMutation()` Hook to execute the `SAVE_BOOK` mutation in the `handleSaveBook()` function instead of the `saveBook()` function imported from the `API` file.
+
+	* Make sure you keep the logic for saving the book's ID to state in the `try...catch` block! 
+
+* `SavedBooks.js`:
+
+	* Remove the `useEffect()` Hook that sets the state for `UserData`.
+
+	* Instead, use the `useQuery()` Hook to execute the `GET_ME` query on load and save it to a variable named `userData`.
+
+	* Use the `useMutation()` Hook to execute the `REMOVE_BOOK` mutation in the `handleDeleteBook()` function instead of the `deleteBook()` function that's imported from `API` file. (Make sure you keep the `removeBookId()` function in place!)
+
+* `SignupForm.js`: Replace the `addUser()` functionality imported from the `API` file with the `ADD_USER` mutation functionality.
+
+* `LoginForm.js`: Replace the `loginUser()` functionality imported from the `API` file with the `LOGIN_USER` mutation functionality.
+
+
+## Links
+
+You are required to submit BOTH of the following for review:
+
+* The URL of the deployed application:
+
+* The URL of the GitHub repository:
