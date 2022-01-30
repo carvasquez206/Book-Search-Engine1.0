@@ -121,6 +121,7 @@ Additionally, you’ll need to complete the following tasks in each of these fro
 
 * `SavedBooks.js`:
 
+
 	* Remove the `useEffect()` Hook that sets the state for `UserData`.
 
 	* Instead, use the `useQuery()` Hook to execute the `GET_ME` query on load and save it to a variable named `userData`.
