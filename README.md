@@ -136,6 +136,6 @@ Additionally, you’ll need to complete the following tasks in each of these fro
 
 You are required to submit BOTH of the following for review:
 
-* The URL of the deployed application:
+* The URL of the deployed application (Heroku):
 
 * The URL of the GitHub repository:
