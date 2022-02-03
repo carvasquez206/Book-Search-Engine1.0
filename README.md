@@ -138,5 +138,7 @@ Additionally, you’ll need to complete the following tasks in each of these fro
 You are required to submit BOTH of the following for review:
 
 * The URL of the deployed application (Heroku):
+- https://booksearchengine1234.herokuapp.com/
 
 * The URL of the GitHub repository:
+- https://github.com/carvasquez206/Book-Search-Engine1.0
