@@ -1,13 +1,8 @@
 # Book-Search-Engine1.0
-Mern: book search engine
 
-## Your Task
+Mern: Book Search Engine
 
-Your assignment this week is emblematic of the fact that most modern websites are driven by two things: data and user demands. This shouldn't come as a surprise, as the ability to personalize user data is the cornerstone of real-world web development today. And as user demands evolve, applications need to be more performant.
-
-This week, you’ll take starter code with a fully functioning Google Books API search engine built with a RESTful API, and refactor it to be a GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. It's already set up to allow users to save book searches to the back end. 
-
-To complete the assignment, you’ll need to do the following:
+## Task
 
 1. Set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
 
@@ -15,7 +10,7 @@ To complete the assignment, you’ll need to do the following:
 
 3. Create an Apollo Provider so that requests can communicate with an Apollo Server.
 
-4. Deploy your application to Heroku with a MongoDB database using MongoDB Atlas. Use the [Deploy with Heroku and MongoDB Atlas](https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas) walkthrough for instructions.
+4. Deploy your application to Heroku with a MongoDB database using MongoDB Atlas. 
 
 
 ## User Story
@@ -27,8 +22,6 @@ SO THAT I can keep a list of books to purchase
 ```
 
 ### Back-End Specifications
-
-You’ll need to complete the following tasks in each of these back-end files:
 
 * `auth.js`: Update the auth middleware function to work with the GraphQL API.
 
@@ -95,7 +88,7 @@ You’ll need to complete the following tasks in each of these back-end files:
 
 ### Front-End Specifications
 
-You'll need to create the following front-end files:
+Create the following front-end files:
 
 * `queries.js`: This will hold the query `GET_ME`, which will execute the `me` query set up using Apollo Server.
 
@@ -135,10 +128,8 @@ Additionally, you’ll need to complete the following tasks in each of these fro
 
 ## Links
 
-You are required to submit BOTH of the following for review:
+* The URL of the GitHub repository:
+- https://github.com/carvasquez206/Book-Search-Engine1.0
 
 * The URL of the deployed application (Heroku):
 - https://booksearchengine1234.herokuapp.com/
-
-* The URL of the GitHub repository:
-- https://github.com/carvasquez206/Book-Search-Engine1.0
